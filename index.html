@@ -292,6 +292,79 @@ section{position:relative;z-index:1}
 }
 .service-card p{font-size:0.82rem;color:var(--muted);line-height:1.8}
 
+.portfolio{padding:8rem 5rem;background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.portfolio-header{margin-bottom:5rem;max-width:560px}
+.portfolio-header p{margin-top:1.2rem;color:var(--muted2);font-size:0.9rem;line-height:1.8}
+
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+
+.portfolio-card{
+  border:1px solid var(--border);
+  background:var(--card);
+  overflow:hidden;
+  position:relative;
+  transition:border-color .3s,transform .4s;
+  text-decoration:none;
+  display:block;
+}
+.portfolio-card:hover{border-color:rgba(201,149,44,0.4);transform:translateY(-4px)}
+
+.portfolio-frame{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  background:var(--black);
+  border-bottom:1px solid var(--border);
+}
+.portfolio-frame iframe{
+  position:absolute;top:0;left:0;
+  width:250%;height:250%;
+  transform:scale(0.4);
+  transform-origin:top left;
+  border:0;
+  pointer-events:none;
+}
+.portfolio-frame::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 60%,rgba(19,17,13,0.85) 100%);
+}
+.portfolio-visit{
+  position:absolute;bottom:0.9rem;right:0.9rem;z-index:2;
+  font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--white);background:rgba(201,149,44,0.9);
+  padding:0.4rem 0.85rem;font-family:var(--sans);font-weight:600;
+  opacity:0;transform:translateY(6px);
+  transition:opacity .3s,transform .3s;
+}
+.portfolio-card:hover .portfolio-visit{opacity:1;transform:translateY(0)}
+
+.portfolio-body{padding:1.8rem 2rem 2.1rem}
+.portfolio-tag{
+  font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gold-bright);display:block;margin-bottom:0.6rem;
+}
+.portfolio-body h3{
+  font-family:var(--serif);font-size:1.3rem;font-weight:400;
+  color:var(--white);margin-bottom:0.6rem;letter-spacing:0.01em;
+}
+.portfolio-body p{font-size:0.8rem;color:var(--muted);line-height:1.75;margin-bottom:1rem}
+.portfolio-cta{
+  font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--gold-bright);display:inline-flex;align-items:center;gap:0.4rem;
+  font-family:var(--sans);font-weight:600;
+}
+.portfolio-card:hover .portfolio-cta{color:var(--white)}
+
+@media(max-width:960px){
+  .portfolio{padding:5rem 2rem}
+  .portfolio-grid{grid-template-columns:1fr}
+}
+
 .pricing{padding:8rem 5rem}
 .pricing-header{text-align:center;margin-bottom:5rem}
 .pricing-header p{margin-top:1rem;color:var(--muted2);font-size:0.88rem}
@@ -540,6 +613,7 @@ footer p{font-size:0.68rem;color:var(--muted);letter-spacing:0.06em}
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-menu-close" id="menuClose">&#10005;</button>
   <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#portfolio" onclick="closeMenu()">Work</a>
   <a href="#pricing" onclick="closeMenu()">Pricing</a>
   <a href="#process" onclick="closeMenu()">Process</a>
   <a href="https://wa.me/917339342790" target="_blank">Get in Touch</a>
@@ -552,6 +626,7 @@ footer p{font-size:0.68rem;color:var(--muted);letter-spacing:0.06em}
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Work</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#process">Process</a></li>
   </ul>
@@ -686,6 +761,56 @@ footer p{font-size:0.68rem;color:var(--muted);letter-spacing:0.06em}
       <h3>Brand Identity Kits</h3>
       <p>Complete brand systems — palette, typography, logo variants, and guidelines. One coherent identity across everything.</p>
     </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio reveal" id="portfolio">
+  <div class="portfolio-header">
+    <span class="s-label">Selected Work</span>
+    <h2 class="s-title">Live Projects, Real Results</h2>
+    <p>A look at landing pages we've shipped for clients across fitness, food & beverage, and beauty. Click any card to visit the live site.</p>
+  </div>
+
+  <div class="portfolio-grid">
+    <a href="https://gym-eta-five-19.vercel.app/" target="_blank" rel="noopener" class="portfolio-card reveal">
+      <div class="portfolio-frame">
+        <iframe src="https://gym-eta-five-19.vercel.app/" loading="lazy" title="Iron Peak Fitness preview"></iframe>
+        <span class="portfolio-visit">Visit Live Site ↗</span>
+      </div>
+      <div class="portfolio-body">
+        <span class="portfolio-tag">Fitness & Gym</span>
+        <h3>Iron Peak Fitness</h3>
+        <p>A high-energy landing page built to drive gym sign-ups, with bold visuals and a clear membership CTA.</p>
+        <span class="portfolio-cta">View Project ↗</span>
+      </div>
+    </a>
+
+    <a href="https://oasis-sample.vercel.app/" target="_blank" rel="noopener" class="portfolio-card reveal">
+      <div class="portfolio-frame">
+        <iframe src="https://oasis-sample.vercel.app/" loading="lazy" title="Flavour Stop preview"></iframe>
+        <span class="portfolio-visit">Visit Live Site ↗</span>
+      </div>
+      <div class="portfolio-body">
+        <span class="portfolio-tag">Food & Beverage</span>
+        <h3>Flavour Stop</h3>
+        <p>A warm, appetite-driving cafe site designed around the menu, ambience, and easy online ordering.</p>
+        <span class="portfolio-cta">View Project ↗</span>
+      </div>
+    </a>
+
+    <a href="https://sample-salon-nine.vercel.app/" target="_blank" rel="noopener" class="portfolio-card reveal">
+      <div class="portfolio-frame">
+        <iframe src="https://sample-salon-nine.vercel.app/" loading="lazy" title="Lumiere preview"></iframe>
+        <span class="portfolio-visit">Visit Live Site ↗</span>
+      </div>
+      <div class="portfolio-body">
+        <span class="portfolio-tag">Beauty & Salon</span>
+        <h3>Lumiere</h3>
+        <p>An elegant, appointment-focused salon site with a refined aesthetic built around the brand's identity.</p>
+        <span class="portfolio-cta">View Project ↗</span>
+      </div>
+    </a>
   </div>
 </section>
 
